@@ -1,12 +1,17 @@
+# Basis-Image mit Node.js
 FROM node:18
 
+# Arbeitsverzeichnis im Container
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+# package.json und package-lock.json kopieren
+COPY package*.json ./
+
+# Abhängigkeiten installieren
 RUN npm install
 
+# Restliche Dateien kopieren
 COPY . .
 
-EXPOSE 3000
-
+# React Dev-Server starten
 CMD ["npm", "start"]
